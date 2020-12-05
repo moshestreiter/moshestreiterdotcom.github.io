@@ -32,7 +32,7 @@ let questionNum = 1;
 //view.level("Level: " + level);
 //view.score("Score: " + score + "/" + GAMELENGTH);
 //view.question("Question #" + questionNum + "/" + GAMELENGTH);
-view.message("First read the test info below, we can wait...<br> Press 'Start' to begin the test:")
+view.message("First read the test info below,<br> we can wait...<br> Press 'Start' to begin the test:")
 
 document.getElementById("different").disabled = true;
 document.getElementById("same").disabled = true;
