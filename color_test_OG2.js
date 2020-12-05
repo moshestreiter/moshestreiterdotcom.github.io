@@ -151,7 +151,7 @@ function handleNext() {
         } else if (parseFloat(score/GAMELENGTH) >= .75) {
             view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you answered at least 75% correctly on the test (well done), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
         } else {
-           view.message( "End of Test.<br><br>You were not able to answer at least 75% correctly on the test at this level. You can try again at the same level to see if you do better, or consider taking a new test at a less challenging level to find the maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:")
+           view.message( "End of Test.<br><br>You were not able to answer at least 75% correctly on the test at level " + LEVEL + ". You can try again at the same level to see if you do better, or consider taking a new test at a less challenging level to find the maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:")
         }
         document.getElementById("next").disabled = true;
         document.getElementById("begin").disabled = false;
