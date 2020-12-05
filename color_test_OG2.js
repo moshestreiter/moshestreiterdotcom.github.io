@@ -46,7 +46,7 @@ function startTest() {
     score = 0;
     questionNum = 1;
     do {
-        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128: ")
+        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128 (1 being the most challenging and 128 being least challenging): ")
     } while (level < 1 || level > 128 || Number.isInteger(parseInt(level)) == false);
     LEVEL = parseInt(level);
     document.getElementById("heading").hidden = true;
