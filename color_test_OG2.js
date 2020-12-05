@@ -10,7 +10,7 @@ let view = {
     question: function(q) {
         let questionNum = document.getElementById("questionNum");
         questionNum.innerHTML = q;
-    },
+    }, 
     level: function(l) {
         let levelInd = document.getElementById("level");
         levelInd.innerHTML = l;
@@ -32,7 +32,7 @@ let questionNum = 1;
 //view.level("Level: " + level);
 //view.score("Score: " + score + "/" + GAMELENGTH);
 //view.question("Question #" + questionNum + "/" + GAMELENGTH);
-view.message("Read the test info below, we can wait...<br> Press 'Start' to begin the test:")
+view.message("First read the test info below, we can wait...<br> Press 'Start' to begin the test:")
 
 document.getElementById("different").disabled = true;
 document.getElementById("same").disabled = true;
@@ -46,8 +46,8 @@ function startTest() {
     score = 0;
     questionNum = 1;
     do {
-        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 100: ")
-    } while (level < 1 || level > 100);
+        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128: ")
+    } while (level < 1 || level > 128 || Number.isInteger(parseInt(level)) == false);
     LEVEL = parseInt(level);
     document.getElementById("heading").hidden = true;
     document.getElementById("different").disabled = false;
@@ -115,9 +115,9 @@ function handleDifferent() {
     if (square1 != square2) {
         score += 1;
         view.score("Score: " + score + "/" + GAMELENGTH);
-        view.message("Correct - the squares are different colors")
+        view.message("True -<br> the squares are different colors")
     } else {
-        view.message("Incorrect - the squares are the same color")
+        view.message("False -<br> the squares are the same color")
     }
     document.getElementById("different").disabled = true;
     document.getElementById("same").disabled = true;
@@ -131,9 +131,9 @@ function handleSame() {
     if (square1 == square2) {
         score += 1;
         view.score("Score: " + score + "/" + GAMELENGTH);
-        view.message("True - the squares are the same color");
+        view.message("True -<br> the squares are the same color");
     } else {
-        view.message("False - the squares are different colors");
+        view.message("False -<br> the squares are different colors");
     }
     document.getElementById("different").disabled = true;
     document.getElementById("same").disabled = true;
@@ -144,8 +144,10 @@ function handleSame() {
 
 function handleNext() {
     if (questionNum == GAMELENGTH) {
-        if (score/GAMELENGTH === 1) {
-            view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you achieved a perfect score (congrats!), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
+        if (LEVEL === 1 && parseFloat(score/GAMELENGTH) >= .75) {
+            view.message("End of Test.<br><br>Wow amazing! You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + "! Which means either you have super-human color vision capable of seeing at least all the possible colors that can be displayed by your display, or you cheated by looking at the developers console or used inspect elements to view the source code :)<br><br> Press 'Start' to begin a new test: ")
+        } else if (score/GAMELENGTH === 1) {
+            view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you achieved a perfect score (congrats), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
         } else if (parseFloat(score/GAMELENGTH) >= .75) {
             view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you answered at least 75% correctly on the test (well done), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
         } else {
@@ -178,6 +180,7 @@ function nextSlide() {
     view.score("Score: " + score + "/" + GAMELENGTH);
     view.question("Question #" + questionNum + "/" + GAMELENGTH);
 
+    console.log("Test Differential: " + LEVEL);
     console.log("Left Square: " + square1);
     console.log("Right Square: " + square2);
     //console.log("Board: " + board);
