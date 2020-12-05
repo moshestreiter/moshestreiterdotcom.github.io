@@ -1,0 +1,200 @@
+let view = {
+    score: function(score) {
+        let scoreDisplay = document.getElementById("score");
+        scoreDisplay.innerHTML = score;
+    },
+    message: function(result) {
+        let messageDisplay = document.getElementById("messageDisplay");
+        messageDisplay.innerHTML = result;
+    },
+    question: function(q) {
+        let questionNum = document.getElementById("questionNum");
+        questionNum.innerHTML = q;
+    },
+    level: function(l) {
+        let levelInd = document.getElementById("level");
+        levelInd.innerHTML = l;
+    }
+};
+ 
+let level = "";
+let LEVEL = 0;
+let R = "";
+let G = "";
+let B = "";
+let square1 = "";
+let square2 = ""; 
+let board = "";
+const GAMELENGTH = 18;
+let score = 0;
+let questionNum = 1;
+
+//view.level("Level: " + level);
+//view.score("Score: " + score + "/" + GAMELENGTH);
+//view.question("Question #" + questionNum + "/" + GAMELENGTH);
+view.message("Read the test info below, we can wait...<br> Press 'Start' to begin the test:")
+
+document.getElementById("different").disabled = true;
+document.getElementById("same").disabled = true;
+document.getElementById("next").disabled = true;
+document.getElementById("board").style.background = "linear-gradient(90deg, red, yellow, green, blue, purple)";
+
+let begin = document.getElementById("begin");
+begin.onclick = startTest;
+
+function startTest() {
+    score = 0;
+    questionNum = 1;
+    do {
+        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 100: ")
+    } while (level < 1 || level > 100);
+    LEVEL = parseInt(level);
+    document.getElementById("heading").hidden = true;
+    document.getElementById("different").disabled = false;
+    document.getElementById("same").disabled = false;
+    nextSlide();
+}
+
+function generatePrimaryColor() {
+    return Math.floor(Math.random() * 256);
+}
+
+function generateSquare1() {
+    return "rgb(" + R + "," + G + "," + B + ")";
+}
+
+function generateSquare2() {
+    let sameOrDifferent = Math.floor(Math.random() * 2);
+    let randomPrimary = Math.floor(Math.random() * 3);
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    if (sameOrDifferent === 0) {
+        return "rgb(" + R + "," + G + "," + B + ")";
+    }
+
+    if (randomPrimary === 0) {
+        r = generateColor(R);
+        g = G;
+        b = B;
+        return "rgb(" + r + "," + g + "," + b + ")";
+    } else if (randomPrimary === 1) {
+        r = R;
+        g = generateColor(G);
+        b = B;
+        return "rgb(" + r + "," + g + "," + b + ")";
+    } else {
+        r = R;
+        g = G;
+        b = generateColor(B);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+}
+
+function generateColor(primCol) {
+    if (primCol + LEVEL > 255) {
+        return primCol - LEVEL;
+    } else if (primCol - LEVEL < 0) {
+        return primCol + LEVEL;
+    } else {
+        return plusOrMinus(LEVEL) + primCol;
+    }
+}
+
+function plusOrMinus(level) {
+    let plus = + level;
+    let minus = - level;
+    if (Math.floor(Math.random() * 2) === 1) {
+        return plus;
+    } else {
+        return minus;
+    }
+}
+
+function handleDifferent() {
+    if (square1 != square2) {
+        score += 1;
+        view.score("Score: " + score + "/" + GAMELENGTH);
+        view.message("Correct - the squares are different colors")
+    } else {
+        view.message("Incorrect - the squares are the same color")
+    }
+    document.getElementById("different").disabled = true;
+    document.getElementById("same").disabled = true;
+
+    document.getElementById("next").disabled = false;
+    let nextTest = document.getElementById("next");
+    nextTest.onclick = handleNext;    
+}
+
+function handleSame() {
+    if (square1 == square2) {
+        score += 1;
+        view.score("Score: " + score + "/" + GAMELENGTH);
+        view.message("True - the squares are the same color");
+    } else {
+        view.message("False - the squares are different colors");
+    }
+    document.getElementById("different").disabled = true;
+    document.getElementById("same").disabled = true;
+    document.getElementById("next").disabled = false;
+    let nextTest = document.getElementById("next");
+    nextTest.onclick = handleNext;
+}
+
+function handleNext() {
+    if (questionNum == GAMELENGTH) {
+        if (score/GAMELENGTH === 1) {
+            view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you achieved a perfect score (congrats!), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
+        } else if (parseFloat(score/GAMELENGTH) >= .75) {
+            view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you answered at least 75% correctly on the test (well done), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
+        } else {
+           view.message( "End of Test.<br><br>You were not able to answer at least 75% correctly on the test at this level. You can try again at the same level to see if you do better, or consider taking a new test at a less challenging level to find the maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:")
+        }
+        document.getElementById("next").disabled = true;
+        document.getElementById("begin").disabled = false;
+    } else {
+        document.getElementById("different").disabled = false;
+        document.getElementById("same").disabled = false;
+        questionNum += 1;
+        nextSlide();
+    }  
+}
+function nextSlide() {
+    R = generatePrimaryColor();
+    G = generatePrimaryColor();
+    B = generatePrimaryColor();
+    
+    square1 = document.getElementById("square1").style.backgroundColor = generateSquare1();
+    square2 = document.getElementById("square2").style.backgroundColor = generateSquare2();
+    board = document.getElementById("board").style.backgroundColor = square1;
+
+    let different = document.getElementById("different");
+    different.onclick = handleDifferent;
+    let same = document.getElementById("same");
+    same.onclick = handleSame;
+    document.getElementById("next").disabled = true;
+    view.message("Are the two squares <br> the same or different colors?")
+    view.score("Score: " + score + "/" + GAMELENGTH);
+    view.question("Question #" + questionNum + "/" + GAMELENGTH);
+
+    console.log("Left Square: " + square1);
+    console.log("Right Square: " + square2);
+    //console.log("Board: " + board);
+    //console.log(plusOrMinus(LEVEL));
+}
+
+
+/*window.onload = init;
+
+function init() {
+    //LEVEL = window.prompt("Enter level of color differential:")
+    nextSlide();
+}*/
+    
+
+/*if(questionNum === 1) {
+    do {
+        LEVEL = prompt("Enter level of color differential:")
+    } while (LEVEL < 1 || LEVEL > 50);
+}*/
