@@ -12,7 +12,7 @@ h1 {
     text-align: center;
     font-size: medium;
     font-family: sans-serif;
-    width: 700px;
+    width: 500px;
     line-height: 30px;
 }
 
@@ -35,7 +35,7 @@ div#messageDisplay {
     text-align: center;
     font-size: 100%;
     margin-bottom: 15px;
-    width: 500px;
+    width: 700px;
     height: 100;
 }
 
