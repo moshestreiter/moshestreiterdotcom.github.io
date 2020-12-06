@@ -87,6 +87,11 @@ span#red {
     color: red;
 }
 
+#visitorcount{
+    text-align: center;
+    margin-top: 20px;
+}
+
 
 @media (max-width: 400px){
     
