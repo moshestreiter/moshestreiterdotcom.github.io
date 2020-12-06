@@ -46,7 +46,7 @@ function startTest() {
     score = 0;
     questionNum = 1;
     do {
-        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128 (1 being the most challenging and 128 being least challenging):\n\n Note.\nIf you are taking the test for the first time, it is suggested to start at a less challenging level like 20 or 30 or so and work your way up so as to get familiar with the nature of the test and to not get discouraged from the first try. Levels 1 – 10 can be very difficult especially to start out with, as the color differences are usually extremely subtle. ")
+        level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128 (1 being the most challenging and 128 being least challenging):\n\nNote.\nIf you are taking the test for the first time, it is suggested to start at a less challenging level like 20 or 30 or so and work your way up so as to get familiar with the nature of the test and to not get discouraged from the first try. Levels 1 – 10 can be very difficult especially to start out with, as the color differences are usually extremely subtle. ")
     } while (level < 1 || level > 128 || Number.isInteger(parseInt(level)) == false);
     LEVEL = parseInt(level);
     document.getElementById("heading").hidden = true;
@@ -145,7 +145,7 @@ function handleSame() {
 function handleNext() {
     if (questionNum == GAMELENGTH) {
         if (LEVEL === 1 && parseFloat(score/GAMELENGTH) >= .75) {
-            view.message("End of Test.<br><br>Wow amazing! You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + "! Which means either you have super-human color vision capable of seeing at least all the possible colors that can be displayed by your display, or you cheated by looking at the developers console or used inspect elements to view the source code :)<br><br> Press 'Start' to begin a new test: ")
+            view.message("End of Test.<br><br>Wow amazing! You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + "! Which means either you have super-human color vision probably capable of seeing almost or at least all the possible colors that can be displayed by your screen, or you cheated by looking at the developers console or used inspect elements to view the source code :)<br><br> Press 'Start' to begin a new test: ")
         } else if (score/GAMELENGTH === 1) {
             view.message("End of Test.<br><br>You can see approximately " + (Math.round((16777216 / LEVEL) * score/GAMELENGTH)) + " colors at level " + LEVEL + ". Considering you achieved a perfect score (congrats), take a new test at a more challenging level to get closer to the real maximum number of colors you can see.<br><br> Press 'Start' to begin a new test:");
         } else if (parseFloat(score/GAMELENGTH) >= .75) {
