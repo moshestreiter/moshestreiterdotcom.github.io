@@ -37,7 +37,7 @@ view.message("First read the test info below,<br> we can wait...<br> Press 'Star
 document.getElementById("different").disabled = true;
 document.getElementById("same").disabled = true;
 document.getElementById("next").disabled = true;
-document.getElementById("board").style.background = "linear-gradient(90deg,rgb(255,0,127), rgb(255,0,0), rgb(255,127,0), rgb(255,255,0), rgb(0,255,0), rgb(0,255,127), rgb(0,255,255),rgb(0,0,255), rgb(127,0,255))";
+document.getElementById("board").style.background = "linear-gradient(90deg, rgb(255,0,127), rgb(255,0,0), rgb(255,127,0), rgb(255,255,0), rgb(0,255,0), rgb(0,255,255), rgb(0,127,255), rgb(0,0,255), rgb(127,0,255), rgb(255,0,255), rgb(255,0,127), rgb(255,0,0), rgb(255,127,0), rgb(255,255,0), rgb(0,255,0), rgb(0,255,255), rgb(0,127,255),rgb(0,0,255), rgb(127,0,255))";
 
 let begin = document.getElementById("begin");
 begin.onclick = startTest;
