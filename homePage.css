@@ -12,10 +12,6 @@ body {
     text-align: center;
     
 }
-a:link {
-    
-    color: white;
-}
 
 div#buttonContainer {
     display: flex;
@@ -64,7 +60,7 @@ hr {
     margin: 0;
 }
 
-a#hitCounter {
+a {
     text-justify: left;
     margin: 0;
 }
