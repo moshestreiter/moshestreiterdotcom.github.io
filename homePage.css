@@ -63,3 +63,8 @@ hr {
     text-align: center;
     margin: 0;
 }
+
+a#hitCounter {
+    text-justify: left;
+    margin: 0;
+}
