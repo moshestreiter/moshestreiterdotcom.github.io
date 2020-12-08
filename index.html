@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>The Color Website</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="homePage.css">
+    <link rel="stylesheet" href="rainbow_generator.css">
+    <link rel="stylesheet" href="color_test.css">
+    <link rel="stylesheet" href="battleship.css">
+  </head>
+
+  <body id="main">
+      <div id="buttonContainer">
+        <button title="Home Page" id="homePage" class="homeButton" onclick="homePage()" disabled>Home Page</button>
+        <button title="Click to generate a true to color rainbow" id="generateRainbow" class="homeButton" onclick="generateRainbow()">Generate Rainbow</button>
+        <button title="Click to take a fun color test!" id="colorTest" class="homeButton" onclick="colorTest()">Color Test</button>
+      </div>
+
+      <div id="pageInfo">
+          <h1>[This web application is the portfolio of me, Moshe Streiter]</h1>
+          
+          <p>In the field of buttons above, you will find my 100% originally concieved and designed apps and websites.<br><br>In the field of buttons below, you will find some fun apps that are not 100% if any of my original idea or design, rather they were built as exercises to learn coding from various sources which are cited when hovering the mouse pointer over the respective button.</p>
+
+          <div id="bootlegButtonContainer">
+            <button title="Battleship Game - Credit: 'Head First JavaScript Programming'" id="PlayBattleship" class="homeButton" onclick="playBattleship()">Battleship</button>
+        </div>
+      </div>
+      <hr>
+
+
+    <script src="homePage.js"></script>
+    <script src="color_test.js"></script>
+    <script src="rainbow_generator.js"></script>
+    <script src="battleship.js"></script>
+  </body>
+</html>

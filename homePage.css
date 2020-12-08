@@ -1,0 +1,65 @@
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-weight: 100;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    
+}
+a:link {
+    
+    color: white;
+}
+
+div#buttonContainer {
+    display: flex;
+    margin: auto;
+    padding-top: 15px;
+}
+
+button.homeButton {
+    margin: 10px;
+    padding: 10px;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+div#pageInfo {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 500px;
+}
+
+div#bootlegButtonContainer {
+    display: flex;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+h1 {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+}
+
+p {
+    margin: 0px;
+    font-weight: 100;
+}
+
+hr {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
