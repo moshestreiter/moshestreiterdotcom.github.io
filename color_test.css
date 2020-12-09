@@ -49,11 +49,13 @@ div#square2 {
 div#colorTestButtons {
     text-align: center;
     margin: 10px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 button.colorTestButton {
     padding: 10px;
     margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 div.testInfoContainer {
