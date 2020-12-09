@@ -59,7 +59,12 @@ form input {
 }
 
 h1 {
-    color: rgb(83, 175, 19);
-    font-size: medium;
+  color: rgb(83, 175, 19);
+  font-size: medium;
+}
+
+h2 {
+  color: rgb(83, 175, 19);
+  font-size: small;
 }
 
