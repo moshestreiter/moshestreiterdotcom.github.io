@@ -165,7 +165,7 @@ function colorTest() {
         score = 0;
         questionNum = 1;
         do {
-            level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128: ")
+            level = window.prompt("To select the level of color differential you would like to test at, enter a number between 1 - 128 (1 being the most challenging and 128 being least challenging):\n\nNote.\nIf you are taking the test for the first time, it is suggested to start at a less challenging level like 20 or 30 or so and work your way up so as to get familiar with the nature of the test and to not get discouraged from the first try. Levels 1 – 10 can be very difficult especially to start out with, as the color differences are usually extremely subtle. ")
         } while (level < 1 || level > 128 || Number.isInteger(parseInt(level)) == false);
         LEVEL = parseInt(level);
         document.getElementById("board").style.background = square1;
