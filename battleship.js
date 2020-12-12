@@ -9,10 +9,14 @@ function playBattleship() {
     if (document.getElementById("rainbowContainer") != null) {
         document.getElementById("rainbowContainer").remove();
     }
+    if (document.getElementById("colorGeneratorContainer") != null) {
+        document.getElementById("colorGeneratorContainer").remove();
+    }
     //enable other buttons
     document.getElementById("colorTest").disabled = false;
     document.getElementById("homePage").disabled = false;
     document.getElementById("generateRainbow").disabled = false;
+    document.getElementById("generateColorPattern").disabled = false;
 
     let battleshipContain = document.createElement("div");
     battleshipContain.id = "battleshipContainer";
