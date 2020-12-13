@@ -1,5 +1,4 @@
 
-
 div#battleshipContainer {
     display: flex;
     margin-left: auto;
@@ -9,6 +8,5 @@ div#battleshipContainer {
 
 a#battleshipLink {
     color: rgb(83, 175, 19);
+    text-align: center;
 }
-
-
