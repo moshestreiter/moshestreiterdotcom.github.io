@@ -8,10 +8,14 @@ function generateRainbow() {
     if (document.getElementById("battleshipContainer") != null) {
         document.getElementById("battleshipContainer").remove();
     }
+    if (document.getElementById("colorGeneratorContainer") != null) {
+        document.getElementById("colorGeneratorContainer").remove();
+    }
     //enable other buttons
     document.getElementById("colorTest").disabled = false;
     document.getElementById("homePage").disabled = false;
     document.getElementById("PlayBattleship").disabled = false;
+    document.getElementById("generateColorPattern").disabled = false;
 
     let colorArray = [];
     const LENGTH = 255;
