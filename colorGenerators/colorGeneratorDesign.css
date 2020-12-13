@@ -1,23 +1,17 @@
+
 body#main {
     background-color: #000000;
     margin: 0px;
     color: white;
 }
 p {
-    margin-top: 0px;
-    margin-bottom: 2px;
     font-size: xx-small;
     font-family: Arial, Helvetica, sans-serif;
-    width: 350px; 
 }
-p#hint {
-    margin-top: 2px;
-    margin-bottom: 2px;
+p#hint {  
     color: #00FF00;
 }
-p#warning {
-    margin-top: 2px;
-    margin-bottom: 2px;
+p#warning {  
     color: #FF0000;
 }
 div#colorContainer {
@@ -34,6 +28,10 @@ div#inputField {
     padding: 10px;
     background-color: #222222;
 }
+div#inputContainer {
+    width: 400px;
+    margin: 3px;
+}
 div#runContainer {
     display: flex;
     justify-content: center;
@@ -41,8 +39,9 @@ div#runContainer {
     margin-left: 20px;
     width: 225px;
 }
-.input {
-    font-family: 'Courier New', Courier, monospace;
+form.input {
+    margin-top: 3px;
+    margin-left: 20px;
 }
 button.runButton {
     width: 225px;
